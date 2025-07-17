@@ -8,6 +8,7 @@ Penjelasan: Saat user login ulang, token yang diberikan dianggap tidak valid ket
 
 Perbaikannya
 *Login:
+
 app.post('/login', (req, res) => {
   const user = { id: 1, username: 'admin' }; // misalnya dari DB
   const token = jwt.sign(user, SECRET_KEY, { expiresIn: '1h' });
@@ -17,6 +18,7 @@ app.post('/login', (req, res) => {
 
   res.json({ token, refreshToken });
 });
+
 *Middleware Autentikasi:
 function authenticateToken(req, res, next) {
   const authHeader = req.headers['authorization'];
